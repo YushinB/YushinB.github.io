@@ -1,0 +1,1257 @@
+/* Enhanced Theme System for Minimal Mistakes */
+/* Pure CSS approach for maximum compatibility */
+
+/* ============================================
+   PAGE HEADER OVERLAY TEXT FIX (ALL THEMES)
+   ============================================ */
+
+/* Ensure header overlay text is always visible with white color and shadow */
+.page__hero--overlay .page__title,
+.page__hero--overlay .page__lead,
+.page__hero--overlay .page__meta,
+.page__hero-caption {
+  color: #ffffff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+.page__hero--overlay {
+  color: #ffffff !important;
+}
+
+.page__hero--overlay * {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Ensure excerpt text in overlay is visible */
+.archive__item-excerpt,
+.page__hero--overlay .archive__item-excerpt,
+.page__hero--overlay .archive__item-excerpt p {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* ============================================
+   CSS CUSTOM PROPERTIES FOR DYNAMIC THEMING
+   ============================================ */
+
+/* CSS Custom Properties for dynamic theming */
+:root {
+  /* Light theme (default) - Neon skin colors */
+  --mm-primary-color: #52adc8;
+  --mm-background-color: #ffffff;
+  --mm-text-color: #2c3e50;
+  --mm-muted-text-color: #5a6c7d;
+  --mm-border-color: #e9ecef;
+  --mm-form-background-color: #f8f9fa;
+  --mm-footer-background-color: #f8f9fa;
+  --mm-link-color: #52adc8;
+  --mm-masthead-link-color: #2c3e50;
+  --mm-navicon-link-color-hover: #52adc8;
+  --mm-code-background-color: #f8f9fa;
+  
+  /* Custom theme properties */
+  --theme-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --theme-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --theme-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --theme-border-radius: 8px;
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --mm-primary-color: #64b5f6;
+  --mm-background-color: #121212;
+  --mm-text-color: #e0e0e0;
+  --mm-muted-text-color: #b0b0b0;
+  --mm-border-color: #333333;
+  --mm-form-background-color: #1e1e1e;
+  --mm-footer-background-color: #1a1a1a;
+  --mm-link-color: #64b5f6;
+  --mm-masthead-link-color: #e0e0e0;
+  --mm-navicon-link-color-hover: #64b5f6;
+  --mm-code-background-color: #2a2a2a;
+  
+  --theme-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --theme-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Apply theme colors to elements */
+html {
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--mm-background-color) !important;
+  color: var(--mm-text-color) !important;
+  transition: var(--theme-transition);
+}
+
+/* All text elements inherit proper color */
+p, span, div, li, td, th, label, input, textarea, select {
+  color: var(--mm-text-color);
+}
+
+/* Headings with proper contrast */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--mm-text-color) !important;
+}
+
+/* Ensure all paragraphs have proper color */
+.page__content p,
+.page__content li,
+.page__content td,
+.page__content span,
+.page__content div {
+  color: var(--mm-text-color) !important;
+}
+
+/* Archive items and excerpts */
+.archive__item-excerpt,
+.page__meta,
+.comment__date {
+  color: var(--mm-muted-text-color) !important;
+}
+
+/* Override for archive items in header overlays */
+.page__hero--overlay .archive__item-excerpt,
+.page__hero--overlay .page__meta {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Taxonomy and category pages */
+.taxonomy__section,
+.taxonomy__title,
+.entries-list,
+.archive {
+  color: var(--mm-text-color) !important;
+}
+
+/* Sidebar and author info */
+.sidebar,
+.author__content,
+.author__name,
+.author__bio,
+.author__urls {
+  color: var(--mm-text-color) !important;
+}
+
+/* Footer */
+.page__footer,
+.page__footer-copyright {
+  color: var(--mm-muted-text-color) !important;
+}
+
+/* Ensure forms and inputs have readable text */
+input, textarea, select, label {
+  color: var(--mm-text-color) !important;
+}
+
+/* Notice boxes */
+.notice,
+.notice--primary,
+.notice--info,
+.notice--warning {
+  color: var(--mm-text-color) !important;
+}
+
+/* Links */
+a {
+  color: var(--mm-link-color) !important;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--mm-primary-color) !important;
+}
+
+/* Masthead improvements - Enhanced for proper dark theme support */
+.masthead {
+  background-color: var(--mm-background-color) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--mm-border-color) !important;
+  transition: var(--theme-transition);
+}
+
+/* Site title and subtitle */
+.masthead .site-title,
+.site-title {
+  color: var(--mm-text-color) !important;
+  transition: var(--theme-transition);
+}
+
+.masthead .site-subtitle,
+.site-subtitle {
+  color: var(--mm-muted-text-color) !important;
+  transition: var(--theme-transition);
+}
+
+/* Navigation links */
+.greedy-nav a,
+.masthead__menu-item a,
+.visible-links a {
+  color: var(--mm-masthead-link-color) !important;
+  transition: var(--theme-transition);
+}
+
+.greedy-nav a:hover,
+.masthead__menu-item a:hover,
+.visible-links a:hover {
+  color: var(--mm-navicon-link-color-hover) !important;
+}
+
+/* Active/current page indicator */
+.greedy-nav .visible-links a:before {
+  background: var(--mm-primary-color) !important;
+}
+
+/* Mobile menu toggle button */
+.greedy-nav__toggle,
+.search__toggle {
+  color: var(--mm-text-color) !important;
+  transition: var(--theme-transition);
+}
+
+.greedy-nav__toggle:hover,
+.search__toggle:hover {
+  color: var(--mm-primary-color) !important;
+}
+
+/* Navigation icon (hamburger menu) */
+.navicon,
+.navicon:before,
+.navicon:after {
+  background: var(--mm-text-color) !important;
+  transition: var(--theme-transition);
+}
+
+.greedy-nav__toggle:hover .navicon,
+.greedy-nav__toggle:hover .navicon:before,
+.greedy-nav__toggle:hover .navicon:after {
+  background: var(--mm-primary-color) !important;
+}
+
+/* Hidden/dropdown menu */
+.greedy-nav .hidden-links {
+  background: var(--mm-background-color) !important;
+  border: 1px solid var(--mm-border-color) !important;
+  box-shadow: var(--theme-shadow-hover) !important;
+}
+
+.greedy-nav .hidden-links a {
+  color: var(--mm-text-color) !important;
+  border-bottom: 1px solid var(--mm-border-color) !important;
+}
+
+.greedy-nav .hidden-links a:hover {
+  background: var(--mm-form-background-color) !important;
+  color: var(--mm-primary-color) !important;
+}
+
+/* Search button icon */
+.search__toggle .fas {
+  color: var(--mm-text-color) !important;
+  transition: var(--theme-transition);
+}
+
+.search__toggle:hover .fas {
+  color: var(--mm-primary-color) !important;
+}
+
+/* Archive and list items */
+.archive__item,
+.list__item {
+  background-color: var(--mm-background-color) !important;
+  border: 1px solid var(--mm-border-color);
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  transition: var(--theme-transition);
+}
+
+.archive__item:hover,
+.list__item:hover {
+  box-shadow: var(--theme-shadow-hover);
+  transform: translateY(-2px);
+}
+
+.archive__item .archive__item-title {
+  color: var(--mm-text-color) !important;
+}
+
+.archive__item .archive__item-excerpt {
+  color: var(--mm-muted-text-color) !important;
+}
+
+/* Featured posts/projects */
+.feature__item {
+  background-color: var(--mm-form-background-color) !important;
+  border: 1px solid var(--mm-border-color);
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  transition: var(--theme-transition);
+}
+
+.feature__item:hover {
+  box-shadow: var(--theme-shadow-hover);
+  transform: translateY(-3px);
+}
+
+.feature__item .feature__item-teaser {
+  border-radius: var(--theme-border-radius) var(--theme-border-radius) 0 0;
+}
+
+/* Code blocks */
+pre,
+code {
+  background-color: var(--mm-code-background-color) !important;
+  color: var(--mm-text-color) !important;
+  border: 1px solid var(--mm-border-color);
+}
+
+/* Tables */
+table {
+  background-color: var(--mm-background-color) !important;
+}
+
+table th {
+  background-color: var(--mm-form-background-color) !important;
+  border-bottom: 2px solid var(--mm-border-color) !important;
+  color: var(--mm-text-color) !important;
+}
+
+table td {
+  border-bottom: 1px solid var(--mm-border-color) !important;
+  color: var(--mm-text-color) !important;
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  background-color: var(--mm-form-background-color) !important;
+  border: 1px solid var(--mm-border-color) !important;
+  color: var(--mm-text-color) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--mm-primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(82, 173, 200, 0.2) !important;
+}
+
+/* Buttons */
+.btn {
+  transition: var(--theme-transition);
+}
+
+.btn--primary {
+  background-color: var(--mm-primary-color) !important;
+  color: white !important;
+}
+
+.btn--primary:hover {
+  background-color: var(--mm-primary-color) !important;
+  filter: brightness(1.1);
+  color: white !important;
+}
+
+/* Footer */
+.page__footer {
+  background-color: var(--mm-footer-background-color) !important;
+  border-top: 1px solid var(--mm-border-color);
+}
+
+.page__footer-copyright {
+  color: var(--mm-muted-text-color) !important;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--mm-form-background-color) !important;
+  border-right: 1px solid var(--mm-border-color);
+}
+
+.sidebar .nav__list .nav__items {
+  background: var(--mm-form-background-color) !important;
+}
+
+/* Author profile */
+.author__avatar img {
+  border: 2px solid var(--mm-border-color);
+  transition: var(--theme-transition);
+}
+
+.author__content .author__name {
+  color: var(--mm-text-color) !important;
+}
+
+.author__content .author__bio {
+  color: var(--mm-muted-text-color) !important;
+}
+
+.author__urls .fas,
+.author__urls .fab {
+  color: var(--mm-muted-text-color) !important;
+}
+
+/* Theme toggle specific styles */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 1rem;
+}
+
+.theme-btn {
+  background: var(--mm-form-background-color);
+  border: 1px solid var(--mm-border-color);
+  border-radius: 6px;
+  color: var(--mm-text-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  transition: var(--theme-transition);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn:hover {
+  background-color: var(--mm-primary-color);
+  color: white;
+  border-color: var(--mm-primary-color);
+  transform: translateY(-1px);
+}
+
+.theme-btn.active {
+  background-color: var(--mm-primary-color);
+  color: white;
+  border-color: var(--mm-primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive theme toggle */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-left: 0.5rem;
+  }
+  
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0.4rem;
+  }
+}
+
+/* Floating toggle for when masthead is not available */
+.floating-toggle {
+  position: fixed;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  z-index: 1000;
+  flex-direction: column;
+  background-color: var(--mm-background-color);
+  border-radius: var(--theme-border-radius);
+  padding: 0.5rem;
+  box-shadow: var(--theme-shadow-hover);
+  border: 1px solid var(--mm-border-color);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .floating-toggle {
+    right: 0.5rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Smooth transitions for theme changes */
+.changing-theme * {
+  transition: var(--theme-transition) !important;
+}
+
+/* Custom project and content enhancements */
+.project-card,
+.research-card,
+.blog-card {
+  background-color: var(--mm-form-background-color) !important;
+  border: 1px solid var(--mm-border-color);
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  transition: var(--theme-transition);
+}
+
+.project-card:hover,
+.research-card:hover,
+.blog-card:hover {
+  box-shadow: var(--theme-shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* ============================================
+   TABLE OF CONTENTS (TOC) THEME SUPPORT
+   ============================================ */
+
+/* TOC sidebar styling for both themes */
+.sidebar__right,
+.toc {
+  background-color: var(--mm-form-background-color) !important;
+  border: 1px solid var(--mm-border-color) !important;
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  transition: var(--theme-transition);
+}
+
+/* TOC header/title */
+.toc__menu,
+.toc .nav__title {
+  background-color: var(--mm-primary-color) !important;
+  color: #ffffff !important;
+  border-radius: var(--theme-border-radius) var(--theme-border-radius) 0 0;
+  font-weight: bold;
+  transition: var(--theme-transition);
+}
+
+/* TOC title icon */
+.toc .nav__title i {
+  color: #ffffff !important;
+}
+
+/* TOC links */
+.toc__menu a,
+.toc a,
+nav.toc a {
+  color: var(--mm-text-color) !important;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.toc__menu a:hover,
+.toc a:hover,
+nav.toc a:hover {
+  color: var(--mm-primary-color) !important;
+  background-color: var(--mm-form-background-color);
+}
+
+/* Active TOC item */
+.toc__menu .active a,
+.toc .active a,
+nav.toc .active a {
+  color: var(--mm-primary-color) !important;
+  font-weight: bold;
+  border-left: 3px solid var(--mm-primary-color);
+  padding-left: 0.5rem;
+}
+
+/* TOC list items */
+.toc__menu ul,
+.toc ul,
+nav.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc__menu li,
+.toc li,
+nav.toc li {
+  color: var(--mm-text-color) !important;
+  margin: 0.25rem 0;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Nested TOC items */
+.toc__menu li li,
+.toc li li,
+nav.toc li li {
+  padding-left: 1rem;
+  font-size: 0.9em;
+}
+
+/* Dark theme specific TOC adjustments */
+html[data-theme="dark"] .toc__menu,
+html[data-theme="dark"] .toc .nav__title {
+  background-color: var(--mm-primary-color) !important;
+}
+
+html[data-theme="dark"] .sidebar__right,
+html[data-theme="dark"] .toc {
+  background-color: var(--mm-form-background-color) !important;
+  border-color: var(--mm-border-color) !important;
+}
+
+/* Sticky TOC positioning */
+.toc.sticky {
+  position: sticky;
+  top: 2rem;
+}
+
+.project-card h3,
+.project-card h4,
+.research-card h3,
+.research-card h4,
+.blog-card h3,
+.blog-card h4 {
+  color: var(--mm-text-color) !important;
+}
+
+.project-card p,
+.research-card p,
+.blog-card p {
+  color: var(--mm-muted-text-color) !important;
+}
+
+.tech-tag {
+  background-color: var(--mm-primary-color) !important;
+  color: white !important;
+  transition: var(--theme-transition);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+  margin: 0.2rem;
+}
+
+.tech-tag:hover {
+  filter: brightness(1.1);
+  transform: scale(1.05);
+}
+
+/* Enhanced statistics and metrics */
+.stat-card {
+  background: linear-gradient(135deg, var(--mm-primary-color), #64b5f6);
+  border-radius: var(--theme-border-radius);
+  box-shadow: var(--theme-shadow);
+  transition: var(--theme-transition);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card:hover {
+  box-shadow: var(--theme-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Homepage hero section - transparent background */
+.homepage-hero {
+  background: transparent;
+  color: var(--mm-text-color);
+  padding: 4rem 2rem;
+  margin: -2rem -2rem 3rem -2rem;
+  border-radius: 0 0 20px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: var(--theme-transition);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.homepage-hero .hero-title,
+.homepage-hero h1,
+.homepage-hero h2,
+.homepage-hero h3,
+.homepage-hero h4,
+.homepage-hero h5,
+.homepage-hero h6 {
+  color: var(--mm-text-color) !important;
+  text-shadow: none;
+}
+
+.homepage-hero .hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.homepage-hero .highlight {
+  background: linear-gradient(45deg, #52adc8, #64b5f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.homepage-hero .hero-subtitle,
+.homepage-hero p {
+  color: var(--mm-text-color) !important;
+  text-shadow: none;
+}
+
+.homepage-hero .hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.homepage-hero .hero-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--mm-muted-text-color) !important;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.homepage-hero .lead {
+  color: var(--mm-text-color) !important;
+  text-shadow: none;
+}
+
+/* Dark theme homepage hero - transparent */
+html[data-theme="dark"] .homepage-hero {
+  background: transparent;
+  border-bottom: 1px solid #333333;
+}
+
+html[data-theme="dark"] .homepage-hero .hero-title,
+html[data-theme="dark"] .homepage-hero h1,
+html[data-theme="dark"] .homepage-hero h2,
+html[data-theme="dark"] .homepage-hero h3,
+html[data-theme="dark"] .homepage-hero h4,
+html[data-theme="dark"] .homepage-hero h5,
+html[data-theme="dark"] .homepage-hero h6 {
+  color: #e0e0e0 !important;
+  text-shadow: none;
+}
+
+html[data-theme="dark"] .homepage-hero .hero-subtitle,
+html[data-theme="dark"] .homepage-hero p,
+html[data-theme="dark"] .homepage-hero .lead {
+  color: #e0e0e0 !important;
+  text-shadow: none;
+}
+
+html[data-theme="dark"] .homepage-hero .hero-description {
+  color: #b0b0b0 !important;
+}
+
+/* Light theme homepage hero - transparent */
+html[data-theme="light"] .homepage-hero {
+  background: transparent;
+  border-bottom: 1px solid #e9ecef;
+}
+
+html[data-theme="light"] .homepage-hero .hero-title,
+html[data-theme="light"] .homepage-hero h1,
+html[data-theme="light"] .homepage-hero h2,
+html[data-theme="light"] .homepage-hero h3,
+html[data-theme="light"] .homepage-hero h4,
+html[data-theme="light"] .homepage-hero h5,
+html[data-theme="light"] .homepage-hero h6 {
+  color: #1a252f !important;
+  text-shadow: none;
+}
+
+html[data-theme="light"] .homepage-hero .hero-subtitle,
+html[data-theme="light"] .homepage-hero p,
+html[data-theme="light"] .homepage-hero .lead {
+  color: #2c3e50 !important;
+  text-shadow: none;
+}
+
+html[data-theme="light"] .homepage-hero .hero-description {
+  color: #5a6c7d !important;
+}
+
+/* Responsive hero section */
+@media (max-width: 768px) {
+  .homepage-hero .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .homepage-hero {
+    padding: 2rem 1rem;
+    margin: -1rem -1rem 2rem -1rem;
+  }
+}
+
+/* Page content */
+.page {
+  background-color: var(--mm-background-color) !important;
+}
+
+/* Navigation improvements */
+.breadcrumbs {
+  background-color: var(--mm-form-background-color) !important;
+  border-bottom: 1px solid var(--mm-border-color);
+}
+
+.breadcrumbs a {
+  color: var(--mm-link-color) !important;
+}
+
+/* Search form */
+.search-content {
+  background-color: var(--mm-background-color) !important;
+  color: var(--mm-text-color) !important;
+}
+
+.search-content input[type="search"] {
+  background-color: var(--mm-form-background-color) !important;
+  border: 1px solid var(--mm-border-color) !important;
+  color: var(--mm-text-color) !important;
+}
+
+/* Notice boxes */
+.notice {
+  background-color: var(--mm-form-background-color) !important;
+  border-left: 4px solid var(--mm-primary-color) !important;
+  color: var(--mm-text-color) !important;
+}
+
+/* Dark theme specific overrides for maximum compatibility */
+/* Force navigation bar to respect dark theme */
+[data-theme="dark"] .masthead {
+  background-color: #1a1a1a !important;
+  border-bottom-color: #333333 !important;
+}
+
+[data-theme="dark"] .masthead__inner-wrap {
+  background-color: #1a1a1a !important;
+}
+
+[data-theme="dark"] .greedy-nav {
+  background-color: #1a1a1a !important;
+}
+
+[data-theme="dark"] .masthead .site-title,
+[data-theme="dark"] .site-title {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .greedy-nav a,
+[data-theme="dark"] .masthead__menu-item a,
+[data-theme="dark"] .visible-links a,
+[data-theme="dark"] .greedy-nav .visible-links a {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .greedy-nav a:hover,
+[data-theme="dark"] .masthead__menu-item a:hover,
+[data-theme="dark"] .visible-links a:hover,
+[data-theme="dark"] .greedy-nav .visible-links a:hover {
+  color: #64b5f6 !important;
+}
+
+[data-theme="dark"] .greedy-nav__toggle,
+[data-theme="dark"] .search__toggle {
+  color: #e0e0e0 !important;
+}
+
+/* Dark mode TOC styling */
+html[data-theme="dark"] .sidebar__right,
+html[data-theme="dark"] .toc {
+  background-color: #1e1e1e !important;
+  border-color: #333333 !important;
+}
+
+html[data-theme="dark"] .toc__menu,
+html[data-theme="dark"] .toc .nav__title {
+  background-color: #64b5f6 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .toc__menu a,
+html[data-theme="dark"] .toc a,
+html[data-theme="dark"] nav.toc a {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme="dark"] .toc__menu a:hover,
+html[data-theme="dark"] .toc a:hover,
+html[data-theme="dark"] nav.toc a:hover {
+  color: #64b5f6 !important;
+  background-color: rgba(100, 181, 246, 0.1);
+}
+
+html[data-theme="dark"] .toc__menu .active a,
+html[data-theme="dark"] .toc .active a,
+html[data-theme="dark"] nav.toc .active a {
+  color: #64b5f6 !important;
+  border-left-color: #64b5f6 !important;
+}
+
+html[data-theme="dark"] .toc__menu li,
+html[data-theme="dark"] .toc li,
+html[data-theme="dark"] nav.toc li {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .navicon,
+[data-theme="dark"] .navicon:before,
+[data-theme="dark"] .navicon:after {
+  background: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .greedy-nav .hidden-links {
+  background-color: #1a1a1a !important;
+  border-color: #333333 !important;
+}
+
+[data-theme="dark"] .greedy-nav .hidden-links a {
+  color: #e0e0e0 !important;
+  border-bottom-color: #333333 !important;
+}
+
+[data-theme="dark"] .page__footer {
+  background-color: #1a1a1a !important;
+  border-top-color: #333333 !important;
+}
+
+/* Force theme colors on all text elements */
+[data-theme="dark"] .page,
+[data-theme="dark"] .page__content,
+[data-theme="dark"] body {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
+
+/* Light theme explicit overrides to ensure it works properly */
+[data-theme="light"] .masthead {
+  background-color: #ffffff !important;
+  border-bottom-color: #e9ecef !important;
+}
+
+[data-theme="light"] .masthead__inner-wrap {
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] .greedy-nav {
+  background-color: #ffffff !important;
+}
+
+[data-theme="light"] .masthead .site-title,
+[data-theme="light"] .site-title {
+  color: #3a4042 !important;
+}
+
+[data-theme="light"] .greedy-nav a,
+[data-theme="light"] .masthead__menu-item a,
+[data-theme="light"] .visible-links a,
+[data-theme="light"] .greedy-nav .visible-links a {
+  color: #3a4042 !important;
+}
+
+[data-theme="light"] .greedy-nav a:hover,
+[data-theme="light"] .masthead__menu-item a:hover,
+[data-theme="light"] .visible-links a:hover,
+[data-theme="light"] .greedy-nav .visible-links a:hover {
+  color: #52adc8 !important;
+}
+
+[data-theme="light"] .page,
+[data-theme="light"] .page__content,
+[data-theme="light"] body {
+  background-color: #ffffff !important;
+  color: #3a4042 !important;
+}
+
+/* Light mode TOC styling */
+html[data-theme="light"] .sidebar__right,
+html[data-theme="light"] .toc {
+  background-color: #f8f9fa !important;
+  border-color: #e9ecef !important;
+}
+
+html[data-theme="light"] .toc__menu,
+html[data-theme="light"] .toc .nav__title {
+  background-color: #52adc8 !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] .toc__menu a,
+html[data-theme="light"] .toc a,
+html[data-theme="light"] nav.toc a {
+  color: #2c3e50 !important;
+}
+
+html[data-theme="light"] .toc__menu a:hover,
+html[data-theme="light"] .toc a:hover,
+html[data-theme="light"] nav.toc a:hover {
+  color: #52adc8 !important;
+}
+
+html[data-theme="light"] .toc__menu .active a,
+html[data-theme="light"] .toc .active a,
+html[data-theme="light"] nav.toc .active a {
+  color: #52adc8 !important;
+  border-left-color: #52adc8 !important;
+}
+
+/* Ultra-specific overrides for stubborn theme conflicts */
+/* These use maximum specificity to override Minimal Mistakes defaults */
+html[data-theme="dark"] .masthead,
+html[data-theme="dark"] body .masthead {
+  background: #1a1a1a !important;
+  background-color: #1a1a1a !important;
+}
+
+html[data-theme="dark"] .greedy-nav,
+html[data-theme="dark"] body .greedy-nav {
+  background: #1a1a1a !important;
+  background-color: #1a1a1a !important;
+}
+
+html[data-theme="dark"] .masthead a,
+html[data-theme="dark"] .greedy-nav a,
+html[data-theme="dark"] body .masthead a,
+html[data-theme="dark"] body .greedy-nav a {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme="light"] .masthead,
+html[data-theme="light"] body .masthead {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .greedy-nav,
+html[data-theme="light"] body .greedy-nav {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+html[data-theme="light"] .masthead a,
+html[data-theme="light"] .greedy-nav a,
+html[data-theme="light"] body .masthead a,
+html[data-theme="light"] body .greedy-nav a {
+  color: #2c3e50 !important;
+}
+
+/* Dark theme text color overrides for all content */
+html[data-theme="dark"] body,
+html[data-theme="dark"] body * {
+  color: #e0e0e0;
+}
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6 {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] p,
+html[data-theme="dark"] .page__content p,
+html[data-theme="dark"] .page__content li,
+html[data-theme="dark"] .page__content div,
+html[data-theme="dark"] .archive__item-excerpt {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme="dark"] .page__meta,
+html[data-theme="dark"] .comment__date,
+html[data-theme="dark"] small {
+  color: #b0b0b0 !important;
+}
+
+html[data-theme="dark"] a {
+  color: #64b5f6 !important;
+}
+
+html[data-theme="dark"] a:hover {
+  color: #90caf9 !important;
+}
+
+/* Specific content area text fixes */
+html[data-theme="dark"] .page__content,
+html[data-theme="dark"] .entries-list,
+html[data-theme="dark"] .archive {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme="dark"] .archive__item-title,
+html[data-theme="dark"] .archive__item-title a {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .archive__item-excerpt,
+html[data-theme="dark"] .archive__item-teaser {
+  color: #b0b0b0 !important;
+}
+
+/* Sidebar text */
+html[data-theme="dark"] .sidebar,
+html[data-theme="dark"] .author__content,
+html[data-theme="dark"] .author__bio {
+  color: #e0e0e0 !important;
+}
+
+html[data-theme="dark"] .author__name {
+  color: #ffffff !important;
+}
+
+/* Footer text */
+html[data-theme="dark"] .page__footer,
+html[data-theme="dark"] .page__footer-copyright,
+html[data-theme="dark"] .page__footer-follow {
+  color: #b0b0b0 !important;
+}
+
+/* Taxonomy and tag pages */
+html[data-theme="dark"] .taxonomy__section,
+html[data-theme="dark"] .taxonomy__title,
+html[data-theme="dark"] .taxonomy__count {
+  color: #e0e0e0 !important;
+}
+
+/* Buttons remain properly colored */
+html[data-theme="dark"] .btn {
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn--primary {
+  background-color: #64b5f6 !important;
+  color: #000000 !important;
+}
+
+/* Table text */
+html[data-theme="dark"] table,
+html[data-theme="dark"] td,
+html[data-theme="dark"] th {
+  color: #e0e0e0 !important;
+  border-color: #333333 !important;
+}
+
+/* Light theme - ensure text remains dark with proper contrast */
+html[data-theme="light"] body,
+html[data-theme="light"] body * {
+  color: #2c3e50;
+}
+
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] h5,
+html[data-theme="light"] h6 {
+  color: #1a252f !important;
+}
+
+html[data-theme="light"] p,
+html[data-theme="light"] .page__content p,
+html[data-theme="light"] .page__content li,
+html[data-theme="light"] .page__content div {
+  color: #2c3e50 !important;
+}
+
+html[data-theme="light"] a {
+  color: #52adc8 !important;
+}
+
+html[data-theme="light"] a:hover {
+  color: #3d8aa3 !important;
+}
+
+/* Light theme - all content areas */
+html[data-theme="light"] .page__content,
+html[data-theme="light"] .entries-list,
+html[data-theme="light"] .archive {
+  color: #2c3e50 !important;
+}
+
+html[data-theme="light"] .archive__item-title,
+html[data-theme="light"] .archive__item-title a {
+  color: #1a252f !important;
+}
+
+html[data-theme="light"] .archive__item-excerpt,
+html[data-theme="light"] .archive__item-teaser {
+  color: #5a6c7d !important;
+}
+
+/* Light theme - sidebar text */
+html[data-theme="light"] .sidebar,
+html[data-theme="light"] .author__content,
+html[data-theme="light"] .author__bio {
+  color: #2c3e50 !important;
+}
+
+html[data-theme="light"] .author__name {
+  color: #1a252f !important;
+}
+
+/* Light theme - footer text */
+html[data-theme="light"] .page__footer,
+html[data-theme="light"] .page__footer-copyright,
+html[data-theme="light"] .page__footer-follow {
+  color: #5a6c7d !important;
+}
+
+/* Light theme - metadata */
+html[data-theme="light"] .page__meta,
+html[data-theme="light"] .comment__date,
+html[data-theme="light"] small {
+  color: #5a6c7d !important;
+}
+
+/* Light theme - tables */
+html[data-theme="light"] table,
+html[data-theme="light"] td,
+html[data-theme="light"] th {
+  color: #2c3e50 !important;
+  border-color: #e9ecef !important;
+}
+
+/* Light theme - buttons */
+html[data-theme="light"] .btn--primary {
+  background-color: #52adc8 !important;
+  color: #ffffff !important;
+}
+
+/* Light theme - taxonomy */
+html[data-theme="light"] .taxonomy__section,
+html[data-theme="light"] .taxonomy__title,
+html[data-theme="light"] .taxonomy__count {
+  color: #2c3e50 !important;
+}
+
+/* Light theme - ensure proper contrast for all elements */
+html[data-theme="light"] .page,
+html[data-theme="light"] .page__hero,
+html[data-theme="light"] .page__content,
+html[data-theme="light"] .page__share {
+  color: #2c3e50 !important;
+}
+
+html[data-theme="light"] .notice,
+html[data-theme="light"] .notice--primary,
+html[data-theme="light"] .notice--info,
+html[data-theme="light"] .notice--warning,
+html[data-theme="light"] .notice--success,
+html[data-theme="light"] .notice--danger {
+  color: #2c3e50 !important;
+}
+
+/* Print styles */
+@media print {
+  .theme-toggle,
+  .floating-toggle {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}

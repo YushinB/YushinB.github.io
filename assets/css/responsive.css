@@ -1,0 +1,858 @@
+/* ==========================================================================
+   RESPONSIVE DESIGN - Mobile First Approach
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Styles - Mobile First (320px and up)
+   ========================================================================== */
+
+/* Full width layout override */
+.page,
+.page__inner-wrap,
+#main {
+  max-width: 100% !important;
+}
+
+.page__content {
+  max-width: 100%;
+}
+
+/* Fix sidebar overlay issue - ensure content doesn't overlap */
+@media (min-width: 64em) {
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    float: left;
+    width: calc(100% - 300px);
+    padding-right: 3rem;
+    padding-left: 3.5rem;
+  }
+  
+  /* Extra spacing for blog and articles pages */
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 4.5rem;
+    padding-right: 3.5rem;
+  }
+  
+  .sidebar {
+    width: 250px;
+    padding-right: 2rem;
+  }
+  
+  .page__inner-wrap {
+    float: left;
+    width: 100%;
+  }
+}
+
+/* Adjust main content area for better use of space */
+@media (min-width: 80em) {
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    width: calc(100% - 320px);
+    padding-right: 3.5rem;
+    padding-left: 4rem;
+  }
+  
+  /* Extra spacing for blog and articles pages */
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 5rem;
+    padding-right: 4rem;
+  }
+  
+  .page__related {
+    max-width: 100%;
+  }
+  
+  .sidebar {
+    width: 280px;
+    padding-right: 2.5rem;
+  }
+}
+
+/* Navigation and Theme Toggle - Mobile Fix */
+.masthead {
+  position: relative;
+}
+
+.greedy-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.greedy-nav .theme-toggle {
+  order: 10;
+  margin-left: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+}
+
+.greedy-nav .theme-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.greedy-nav__toggle {
+  order: 9;
+  margin-left: auto;
+}
+
+.search__toggle {
+  order: 8;
+}
+
+/* Ensure theme toggle doesn't overlap with hamburger menu */
+@media (max-width: 1024px) {
+  .greedy-nav .visible-links {
+    display: none;
+  }
+  
+  .greedy-nav {
+    justify-content: space-between;
+    padding: 0.5rem 0;
+  }
+  
+  .greedy-nav .theme-toggle {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+    z-index: auto;
+  }
+  
+  .greedy-nav .site-title {
+    flex: 1;
+    margin-right: auto;
+    font-size: 1.1rem;
+    padding-right: 0.5rem;
+  }
+  
+  .greedy-nav .site-logo {
+    max-width: 80px;
+    margin-right: 0.5rem;
+  }
+  
+  .greedy-nav .search__toggle,
+  .greedy-nav .theme-toggle,
+  .greedy-nav__toggle {
+    position: relative;
+    flex-shrink: 0;
+    margin-left: 0.25rem;
+  }
+  
+  .greedy-nav__toggle {
+    margin-left: 0.5rem;
+  }
+  
+  /* Ensure buttons don't get too cramped */
+  .greedy-nav button {
+    min-width: 36px;
+    height: 36px;
+  }
+}
+
+/* Hero Section Responsive */
+.homepage-hero {
+  padding: 1.5rem 0.8rem;
+  margin: -1rem -1rem 1.5rem -1rem;
+}
+
+.hero-content {
+  max-width: 100%;
+  padding: 0 0.5rem;
+}
+
+.homepage-hero .hero-title {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+
+.homepage-hero .hero-subtitle {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+}
+
+.homepage-hero .hero-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Blog Section Responsive */
+.blog-section {
+  padding: 0.8rem 0;
+  margin: 0.8rem 0;
+}
+
+.blog-intro {
+  padding: 0 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.blog-intro p {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0 0.5rem;
+  margin: 0.8rem 0;
+}
+
+.blog-card {
+  padding: 1rem;
+  margin-bottom: 0;
+}
+
+.blog-card .blog-header h3 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.blog-card .blog-header h3 a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.blog-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.blog-date,
+.blog-category {
+  font-size: 0.8125rem;
+  display: block;
+}
+
+.blog-excerpt {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.6rem 0;
+}
+
+.blog-tags .tag,
+.tech-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+}
+
+.read-more {
+  display: inline-block;
+  font-size: 0.875rem;
+  margin-top: 0.4rem;
+}
+
+/* Header and Navigation */
+.page__hero--overlay {
+  padding: 1.5rem 0.8rem;
+}
+
+.page__hero .page__title {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+.page__hero .page__lead {
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Buttons */
+.page__hero .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  margin: 0.3rem 0.3rem 0.3rem 0;
+  display: inline-block;
+}
+
+/* Author Profile - Mobile */
+.sidebar {
+  margin-bottom: 2rem;
+}
+
+.author__avatar {
+  width: 80px;
+  height: 80px;
+}
+
+.author__content {
+  padding: 0.5rem;
+}
+
+.author__name {
+  font-size: 1.125rem;
+}
+
+.author__bio {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* Collection Grid Layout */
+.entries-grid,
+.entries-list {
+  max-width: 100%;
+}
+
+.grid__item {
+  margin-bottom: 1.5rem;
+}
+
+/* Archive and Collection Pages - Better Spacing */
+.layout--archive .page__content,
+.layout--posts .page__content,
+.layout--collection .page__content {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.layout--archive .entries-list,
+.layout--archive .entries-grid,
+.layout--posts .entries-list,
+.layout--posts .entries-grid,
+.layout--collection .entries-list,
+.layout--collection .entries-grid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Content spacing */
+.page__content {
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+.page__content h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.6rem;
+}
+
+.page__content h3 {
+  font-size: 1.25rem;
+  margin: 0.8rem 0 0.5rem;
+}
+
+.page__content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 0.7rem;
+}
+
+/* Images */
+.page__content img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   Small Phones (up to 375px)
+   ========================================================================== */
+@media (max-width: 375px) {
+  .homepage-hero .hero-title {
+    font-size: 1.375rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .blog-card .blog-header h3 {
+    font-size: 1rem;
+  }
+
+  .page__hero .btn {
+    width: 100%;
+    text-align: center;
+    margin: 0.3rem 0;
+  }
+  
+  /* Extra small screens - stack theme buttons vertically if needed */
+  .greedy-nav .theme-toggle {
+    gap: 0.15rem;
+  }
+  
+  .greedy-nav .theme-btn {
+    width: 28px;
+    height: 28px;
+    padding: 0.3rem;
+    font-size: 0.75rem;
+  }
+  
+  .masthead__inner-wrap {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   Small Tablets and Large Phones (376px - 575px)
+   ========================================================================== */
+@media (min-width: 376px) and (max-width: 575px) {
+  .homepage-hero {
+    padding: 1.8rem 1rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 1.625rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 0.9375rem;
+  }
+
+  .blog-grid {
+    padding: 0 0.8rem;
+  }
+  
+  .blog-card .blog-header h3 {
+    font-size: 1.0625rem;
+  }
+}
+
+/* ==========================================================================
+   Tablets (576px - 767px)
+   ========================================================================== */
+@media (min-width: 576px) and (max-width: 767px) {
+  /* Restore normal theme toggle spacing on slightly larger screens */
+  .greedy-nav .theme-toggle {
+    gap: 0.25rem;
+  }
+  
+  .greedy-nav .theme-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0.4rem;
+    font-size: 0.85rem;
+  }
+  
+  .homepage-hero {
+    padding: 2rem 1.2rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .homepage-hero .hero-description {
+    font-size: 0.9375rem;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .blog-meta {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .author__avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .blog-card .blog-header h3 {
+    font-size: 1.0625rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 0.875rem;
+  }
+}
+
+/* ==========================================================================
+   Large Tablets and Small Laptops (768px - 991px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 991px) {
+  .homepage-hero {
+    padding: 2.2rem 1.5rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 2rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1.125rem;
+  }
+
+  .homepage-hero .hero-description {
+    font-size: 1rem;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    padding: 0 1rem;
+  }
+
+  .page__hero .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .author__avatar {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .blog-card .blog-header h3 {
+    font-size: 1.125rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 0.875rem;
+  }
+}
+
+/* ==========================================================================
+   Laptops and Desktops (992px - 1199px)
+   ========================================================================== */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .homepage-hero {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .homepage-hero .hero-description {
+    font-size: 1rem;
+    max-width: 800px;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .author__avatar {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .blog-card .blog-header h3 {
+    font-size: 1.125rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 0.875rem;
+  }
+  
+  /* Fix sidebar overlay */
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    width: calc(100% - 280px);
+    padding-left: 3.5rem;
+    padding-right: 3rem;
+  }
+  
+  /* Extra spacing for blog and articles pages */
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 4.5rem;
+    padding-right: 3.5rem;
+  }
+  
+  .sidebar {
+    padding-right: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Large Desktops (1200px and up)
+   ========================================================================== */
+@media (min-width: 1200px) {
+  .homepage-hero {
+    padding: 3rem 2rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1.375rem;
+  }
+
+  .homepage-hero .hero-description {
+    font-size: 1rem;
+    max-width: 900px;
+  }
+
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.3rem;
+    max-width: 100%;
+  }
+
+  .blog-card {
+    padding: 1.3rem;
+  }
+  
+  .blog-card .blog-header h3 {
+    font-size: 1.125rem;
+  }
+  
+  .blog-excerpt {
+    font-size: 0.875rem;
+  }
+
+  .author__avatar {
+    width: 180px;
+    height: 180px;
+  }
+  
+  /* Make content wider on large screens - fix sidebar overlay */
+  .page__content,
+  .blog-section,
+  .page__inner-wrap {
+    max-width: 100%;
+  }
+  
+  /* Ensure sidebar doesn't overlap content */
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    width: calc(100% - 300px);
+    margin-right: 20px;
+    padding-left: 4rem;
+    padding-right: 3.5rem;
+  }
+  
+  /* Extra spacing for blog and articles pages */
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 5rem;
+    padding-right: 4rem;
+  }
+  
+  .sidebar {
+    width: 280px;
+    padding-right: 2.5rem;
+  }
+  
+  .page {
+    width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Extra Large Desktops (1400px and up)
+   ========================================================================== */
+@media (min-width: 1400px) {
+  .hero-content {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .blog-section,
+  .page__content {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 2.75rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .blog-grid {
+    max-width: 100%;
+  }
+  
+  /* Override Minimal Mistakes default max-width */
+  .page {
+    max-width: 100%;
+  }
+  
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    max-width: 100%;
+    width: calc(100% - 320px);
+    margin-right: 20px;
+    padding-left: 4.5rem;
+    padding-right: 3.5rem;
+  }
+  
+  /* Extra spacing for blog and articles pages */
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 5.5rem;
+    padding-right: 4rem;
+  }
+  
+  #main {
+    max-width: 100%;
+  }
+  
+  .sidebar {
+    width: 300px;
+    padding-right: 3rem;
+  }
+}
+
+/* ==========================================================================
+   Landscape Orientation Adjustments
+   ========================================================================== */
+@media (max-height: 600px) and (orientation: landscape) {
+  .homepage-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .homepage-hero .hero-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .homepage-hero .hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .homepage-hero .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .page__hero--overlay {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+  .homepage-hero,
+  .blog-grid {
+    page-break-inside: avoid;
+  }
+
+  .blog-card {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .page__hero .btn,
+  .read-more,
+  .theme-toggle,
+  .floating-toggle {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Accessibility - Reduced Motion
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .blog-card:hover {
+    transform: none;
+  }
+
+  .author__avatar img:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   High Contrast Mode Support
+   ========================================================================== */
+@media (prefers-contrast: high) {
+  .blog-card {
+    border: 2px solid currentColor;
+  }
+
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ==========================================================================
+   Touch Device Optimizations
+   ========================================================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets for mobile */
+  .btn,
+  .read-more,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+  }
+
+  .blog-card {
+    /* Remove hover effects on touch devices */
+    transform: none !important;
+  }
+}
