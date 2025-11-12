@@ -1,76 +1,11 @@
-<!-- Enhanced theme support meta tags -->
+<!-- Enhanced meta tags -->
 <meta
   name="color-scheme"
   content="light dark"
 />
-<meta
-  name="supported-color-schemes"
-  content="light dark"
-/>
-<meta
-  name="theme-color"
-  content="#ffffff"
-  media="(prefers-color-scheme: light)"
-/>
-<meta
-  name="theme-color"
-  content="#1a1a1a"
-  media="(prefers-color-scheme: dark)"
-/>
 
-<!-- Preload critical theme assets -->
-<link
-  rel="preload"
-  href="{{ '/assets/js/theme-switcher.js' | relative_url }}"
-  as="script"
-/>
-
-<!-- Theme system CSS -->
-<link
-  rel="stylesheet"
-  href="{{ '/assets/css/theme-enhanced.css' | relative_url }}"
-/>
-<link
-  rel="stylesheet"
-  href="{{ '/assets/css/theme-system.css' | relative_url }}"
-/>
+<!-- Responsive CSS -->
 <link
   rel="stylesheet"
   href="{{ '/assets/css/responsive.css' | relative_url }}"
 />
-
-<!-- Prevent flash of unstyled content -->
-<style>
-  /* Immediate theme variables */
-  :root {
-    color-scheme: light dark;
-  }
-
-  html {
-    color-scheme: light;
-  }
-
-  html[data-theme='dark'] {
-    color-scheme: dark;
-  }
-
-  /* Loading state to prevent transitions during initial load */
-  .theme-loading * {
-    transition: none !important;
-  }
-
-  /* Remove loading class after page loads */
-  html.theme-loading {
-    --loading-complete: true;
-  }
-</style>
-
-<script>
-  // Add loading class to prevent transitions during page load
-  document.documentElement.classList.add('theme-loading');
-
-  // Remove loading class when page is fully loaded
-  window.addEventListener('load', function () {
-    document.documentElement.classList.remove('theme-loading');
-  });
-</script>

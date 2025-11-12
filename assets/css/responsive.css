@@ -90,20 +90,6 @@
   flex-wrap: wrap;
 }
 
-.greedy-nav .theme-toggle {
-  order: 10;
-  margin-left: 0.5rem;
-  display: flex;
-  gap: 0.25rem;
-}
-
-.greedy-nav .theme-btn {
-  width: 32px;
-  height: 32px;
-  padding: 0.4rem;
-  font-size: 0.85rem;
-}
-
 .greedy-nav__toggle {
   order: 9;
   margin-left: auto;
@@ -124,19 +110,6 @@
     padding: 0.5rem 0;
   }
   
-  .greedy-nav .theme-toggle {
-    position: relative;
-    top: auto;
-    right: auto;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-    padding: 0;
-    z-index: auto;
-  }
-  
   .greedy-nav .site-title {
     flex: 1;
     margin-right: auto;
@@ -150,7 +123,6 @@
   }
   
   .greedy-nav .search__toggle,
-  .greedy-nav .theme-toggle,
   .greedy-nav__toggle {
     position: relative;
     flex-shrink: 0;
@@ -400,18 +372,6 @@
     margin: 0.3rem 0;
   }
   
-  /* Extra small screens - stack theme buttons vertically if needed */
-  .greedy-nav .theme-toggle {
-    gap: 0.15rem;
-  }
-  
-  .greedy-nav .theme-btn {
-    width: 28px;
-    height: 28px;
-    padding: 0.3rem;
-    font-size: 0.75rem;
-  }
-  
   .masthead__inner-wrap {
     padding: 0.5rem 0.75rem;
   }
@@ -446,17 +406,6 @@
    Tablets (576px - 767px)
    ========================================================================== */
 @media (min-width: 576px) and (max-width: 767px) {
-  /* Restore normal theme toggle spacing on slightly larger screens */
-  .greedy-nav .theme-toggle {
-    gap: 0.25rem;
-  }
-  
-  .greedy-nav .theme-btn {
-    width: 32px;
-    height: 32px;
-    padding: 0.4rem;
-    font-size: 0.85rem;
-  }
   
   .homepage-hero {
     padding: 2rem 1.2rem;
@@ -798,7 +747,6 @@
 
   .page__hero .btn,
   .read-more,
-  .theme-toggle,
   .floating-toggle {
     display: none;
   }
