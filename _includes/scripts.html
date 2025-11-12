@@ -6,6 +6,178 @@
   <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
 {% endif %}
 
+<!-- Navigation fix -->
+<script>
+$(document).ready(function() {
+    var $toggle = $('.greedy-nav__toggle');
+    var $visible = $('.greedy-nav .visible-links');
+    var $hidden = $('.greedy-nav .hidden-links');
+    var $body = $('body');
+    
+    if ($toggle.length === 0 || $hidden.length === 0) {
+        return;
+    }
+    
+    // Store original menu items to prevent duplication
+    var originalMenuItems = null;
+    
+    // Fix for hamburger menu disappearing on window resize
+    function forceMobileNavigation() {
+        var windowWidth = $(window).width();
+        
+        if (windowWidth <= 1024) {
+            // Force mobile mode
+            $toggle.removeClass('hidden').css({
+                'display': 'block',
+                'visibility': 'visible'
+            });
+            $visible.hide();
+            
+            // Prevent duplication - only populate if hidden menu is empty
+            var hiddenCountBefore = $hidden.children().length;
+            var visibleCountBefore = $visible.children().length;
+            
+            if (hiddenCountBefore === 0) {
+                // Store original items on first population
+                if (originalMenuItems === null && visibleCountBefore > 0) {
+                    var sourceItems = $visible.children().slice(0, 4);
+                    originalMenuItems = sourceItems.clone();
+                }
+                
+                if (originalMenuItems && originalMenuItems.length > 0) {
+                    $hidden.empty();
+                    originalMenuItems.clone().appendTo($hidden);
+                }
+            }
+        } else {
+            // Desktop mode
+            $toggle.addClass('hidden');
+            $visible.show();
+            $hidden.addClass('hidden').empty();
+            $body.removeClass('nav-open');
+            
+            // Reset visible menu if it got duplicated
+            if (originalMenuItems && $visible.children().length > 4) {
+                $visible.empty();
+                originalMenuItems.clone().appendTo($visible);
+            }
+        }
+    }
+    
+    // Apply fix on page load and window resize
+    forceMobileNavigation();
+    $(window).resize(forceMobileNavigation);
+    
+    // Ensure menu starts in closed state
+    if ($(window).width() <= 1024) {
+        setTimeout(function() {
+            $hidden.addClass('hidden');
+            $toggle.removeClass('close');
+            $body.removeClass('nav-open');
+            
+            // Override click handlers
+            $toggle.off('click').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                
+                if ($hidden.hasClass('hidden')) {
+                    // Opening menu
+                    $body.removeClass('nav-open');
+                    $hidden.removeClass('hidden');
+                    $toggle.addClass('close');
+                    
+                    setTimeout(function() {
+                        $body.addClass('nav-open');
+                    }, 10);
+                    
+                    // Force menu items to be interactive
+                    setTimeout(function() {
+                        $hidden.find('a').each(function() {
+                            $(this).css({
+                                'pointer-events': 'auto',
+                                'cursor': 'pointer',
+                                'position': 'relative',
+                                'z-index': '1003'
+                            });
+                        });
+                    }, 50);
+                } else {
+                    // Closing menu
+                    $hidden.addClass('hidden');
+                    $toggle.removeClass('close');
+                    $body.removeClass('nav-open');
+                    
+                    // Force immediate cleanup of overlay state
+                    $body[0].classList.remove('nav-open');
+                    $body[0].className = $body[0].className.replace(/\bnav-open\b/g, '');
+                    
+                    // Additional cleanup
+                    setTimeout(function() {
+                        $body.removeClass('nav-open');
+                        $body[0].classList.remove('nav-open');
+                        
+                        var bodyClasses = $body[0].className;
+                        if (bodyClasses.includes('nav-open')) {
+                            $body[0].className = bodyClasses.replace(/\bnav-open\b/g, '').trim();
+                        }
+                        
+                        // Force browser reflow
+                        $body[0].offsetHeight;
+                    }, 50);
+                }
+                
+                return false;
+            });
+        }, 500);
+    }
+    
+    // Close menu when clicking outside
+    $(document).on('click', function(e) {
+        setTimeout(function() {
+            var $target = $(e.target);
+            var isToggle = $target.closest('.greedy-nav__toggle').length;
+            var isHiddenLinks = $target.closest('.greedy-nav .hidden-links').length;
+            var isGreedyNav = $target.closest('.greedy-nav').length;
+            
+            if (!isToggle && !isHiddenLinks && !isGreedyNav && !$hidden.hasClass('hidden')) {
+                $hidden.addClass('hidden');
+                $toggle.removeClass('close');
+                $body.removeClass('nav-open');
+            }
+        }, 10);
+    });
+    
+    // Close menu when clicking on a link
+    $hidden.off('click.menulinks').on('click.menulinks', 'a', function(e) {
+        e.stopPropagation();
+        
+        $hidden.addClass('hidden');
+        $toggle.removeClass('close');
+        $body.removeClass('nav-open');
+        
+        return true;
+    });
+    
+    // Backup handler for menu clicks
+    $hidden.off('click.menubackup').on('click.menubackup', function(e) {
+        var $clickedLink = $(e.target).closest('a');
+        if ($clickedLink.length > 0) {
+            e.stopPropagation();
+            
+            $hidden.addClass('hidden');
+            $toggle.removeClass('close');
+            $body.removeClass('nav-open');
+            
+            var href = $clickedLink.attr('href');
+            if (href && href !== '#') {
+                window.location.href = href;
+            }
+        }
+    });
+});
+</script>
+
 {% if site.search == true or page.layout == "search" %}
   {%- assign search_provider = site.search_provider | default: "lunr" -%}
   {%- case search_provider -%}

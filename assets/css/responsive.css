@@ -79,7 +79,7 @@
   }
 }
 
-/* Navigation and Theme Toggle - Mobile Fix */
+/* Navigation and Mobile Menu Fix */
 .masthead {
   position: relative;
 }
@@ -99,15 +99,79 @@
   order: 8;
 }
 
-/* Ensure theme toggle doesn't overlap with hamburger menu */
+/* Mobile Navigation - Show hamburger menu when needed */
 @media (max-width: 1024px) {
+  /* Dropdown menu styling - semi-transparent with theme matching */
+  .greedy-nav .hidden-links {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    min-width: 200px !important;
+    z-index: 1002 !important;
+    padding: 0 !important;
+    margin-top: 5px !important;
+    overflow: hidden !important;
+    pointer-events: auto !important; /* Ensure menu can receive clicks */
+  }
+  
+  .greedy-nav .hidden-links:not(.hidden) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important; /* Ensure visible menu can receive clicks */
+  }
+  
+  .greedy-nav .hidden-links.hidden {
+    display: none !important;
+  }
+  
+  /* Background overlay when menu is open - prevent color accumulation */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    pointer-events: none; /* Allow clicks to pass through to menu items */
+  }
+  
+  /* Show overlay only when menu is open */
+  body.nav-open::before {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+  }
+  
+  /* Hide navigation links on mobile */
   .greedy-nav .visible-links {
-    display: none;
+    display: none !important;
+  }
+  
+  /* FORCE show the hamburger menu toggle on mobile - override any JS */
+  .greedy-nav__toggle,
+  .greedy-nav__toggle.hidden {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .greedy-nav {
     justify-content: space-between;
     padding: 0.5rem 0;
+    position: relative;
+    z-index: 1000;
   }
   
   .greedy-nav .site-title {
@@ -127,16 +191,135 @@
     position: relative;
     flex-shrink: 0;
     margin-left: 0.25rem;
+    z-index: 1001;
   }
   
   .greedy-nav__toggle {
     margin-left: 0.5rem;
+    display: block !important;
+    visibility: visible !important;
+    outline: none;
+    cursor: pointer;
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .greedy-nav__toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .greedy-nav__toggle:focus {
+    outline: 2px solid #007acc;
+    outline-offset: 2px;
+  }
+  
+  .navicon {
+    display: block !important;
+    position: relative;
+    width: 1.5rem;
+    height: 0.25rem;
+    background: currentColor;
+    margin: auto;
+    transition: 0.3s;
+  }
+  
+  .navicon::before,
+  .navicon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    height: 0.25rem;
+    background: currentColor;
+    transition: 0.3s;
+  }
+  
+  .navicon:before {
+    top: -0.5rem;
+  }
+  
+  .navicon:after {
+    bottom: -0.5rem;
+  }
+  
+  /* Hamburger animation when menu is open */
+  .greedy-nav__toggle.close .navicon {
+    background: transparent;
+  }
+  
+  .greedy-nav__toggle.close .navicon::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+  
+  .greedy-nav__toggle.close .navicon::after {
+    transform: rotate(45deg);
+    bottom: 0;
   }
   
   /* Ensure buttons don't get too cramped */
   .greedy-nav button {
-    min-width: 36px;
-    height: 36px;
+    min-width: 44px;
+    height: 44px;
+  }
+  
+  .greedy-nav .hidden-links li {
+    display: block !important;
+    margin: 0 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    pointer-events: auto !important; /* Ensure list items can receive clicks */
+  }
+  
+  .greedy-nav .hidden-links li:last-child {
+    border-bottom: none !important;
+  }
+  
+  .greedy-nav .hidden-links a {
+    display: block !important;
+    padding: 16px 20px !important;
+    text-decoration: none !important;
+    color: #333 !important;
+    font-weight: 500 !important;
+    transition: background-color 0.2s ease !important;
+    pointer-events: auto !important; /* Ensure links can receive clicks */
+    cursor: pointer !important; /* Ensure cursor shows as clickable */
+    position: relative !important; /* Ensure proper positioning */
+    z-index: 1003 !important; /* Higher than menu container */
+  }
+  
+  .greedy-nav .hidden-links a:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #007acc !important;
+  }
+}
+
+/* Tablet specific navigation fixes */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .greedy-nav .site-title {
+    font-size: 1.25rem;
+  }
+  
+  .greedy-nav__toggle {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  .greedy-nav .hidden-links {
+    min-width: 250px;
+  }
+}
+
+/* Large screens - show full navigation */
+@media (min-width: 1025px) {
+  .greedy-nav__toggle.hidden {
+    display: none !important;
+  }
+  
+  .greedy-nav .visible-links {
+    display: flex !important;
   }
 }
 
