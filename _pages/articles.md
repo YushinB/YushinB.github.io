@@ -7,9 +7,9 @@ author_profile: true
 header:
   overlay_color: "#000"
   overlay_filter: "0.5"
-  overlay_image: /assets/images/articles-header.jpg
+  overlay_image: /assets/images/Articles.jpg
   caption: "Knowledge Through Writing"
-excerpt: "Explore my collection of in-depth articles covering software engineering, data science, AI, and technology trends. Each article shares insights, tutorials, and lessons learned from real-world projects."
+excerpt: "I wrote this article based on my experience studying and working as a developer and system engineer. It may not be perfect, but I hope it can be a helpful reference."
 ---
 
 Discover my technical articles and tutorials where I share knowledge, best practices, and insights from years of experience in software development and engineering. Each article is crafted to provide practical value and actionable takeaways.

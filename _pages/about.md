@@ -173,13 +173,8 @@ I'm a developer and system engineer with 9 years of experience in software devel
   <div class="skill-category">
     <div class="skills-grid">
       <div class="skill-badge expert">
-        <i class="fas fa-brain"></i>
-        <span>TensorFlow</span>
-        <div class="skill-level-indicator expert"></div>
-      </div>
-      <div class="skill-badge expert">
         <i class="fas fa-fire"></i>
-        <span>PyTorch</span>
+        <span>OpenGL</span>
         <div class="skill-level-indicator expert"></div>
       </div>
       <div class="skill-badge advanced">
@@ -207,32 +202,11 @@ I'm a developer and system engineer with 9 years of experience in software devel
         <span>Git</span>
         <div class="skill-level-indicator expert"></div>
       </div>
-      <div class="skill-badge intermediate">
-        <i class="fab fa-aws"></i>
-        <span>AWS</span>
-        <div class="skill-level-indicator intermediate"></div>
-      </div>
     </div>
   </div>
 ---
-## 🎯 Research Interests
-
-<div class="research-interests">
-  <div class="interest-tag primary">Artificial Intelligence</div>
-  <div class="interest-tag secondary">Machine Learning</div>
-  <div class="interest-tag secondary">Natural Language Processing</div>
-  <div class="interest-tag secondary">Computer Vision</div>
-  <div class="interest-tag primary">Data Science</div>
-  <div class="interest-tag secondary">Deep Learning</div>
-  <div class="interest-tag secondary">Statistical Analysis</div>
-  <div class="interest-tag primary">Research Methods</div>
-</div>
-
----
 
 ## 📞 Let's Connect!
-
-I'm always excited to collaborate on innovative projects and research opportunities. Whether you're interested in discussing cutting-edge AI research, exploring potential partnerships, or just want to connect, I'd love to hear from you!
 
 <div class="contact-cta">
   <a href="/contact/" class="btn btn--primary btn--large">
