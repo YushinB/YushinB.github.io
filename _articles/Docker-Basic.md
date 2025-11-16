@@ -6,6 +6,7 @@ categories: [Docker]
 tags: [Containers, Docker Compose]
 excerpt: "These are my notes on Docker, compiled during my self-study. I hope you find them useful."
 header:
+  teaser: /assets/images/500x300.jpg
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: /assets/images/Docker.png

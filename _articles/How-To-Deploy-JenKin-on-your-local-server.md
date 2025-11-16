@@ -6,6 +6,7 @@ categories: [Jenkin, Docker]
 tags: [Jenkin, Docker, Docker Compose, Linux, Git]
 excerpt: "These are my notes about deploy Jenkin server on your local machine using docker. I hope you find them useful."
 header:
+  teaser: /assets/images/500x300.jpg
   overlay_color: "#000"
   overlay_filter: "0.2"
   overlay_image: /assets/images/Articles.jpg

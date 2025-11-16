@@ -6,6 +6,7 @@ categories: [Linux, Shell]
 tags: [Shell, Script]
 excerpt: "Linux = Open, stable, secure, customizable, and built for developers and systems."
 header:
+  teaser: /assets/images/500x300.jpg
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: /assets/images/Articles.jpg
