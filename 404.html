@@ -1,0 +1,72 @@
+---
+layout: single
+title: "Page not found"
+permalink: /404.html
+sitemap: false
+---
+
+<div class="page__hero">
+  <div class="hero-content">
+    <h1 class="hero-title">404 — Page Not Found</h1>
+    <p class="hero-subtitle">Sorry — we couldn't find the page you're looking for.</p>
+
+    <p class="hero-description">
+      Try searching the site, or use the links below to find popular sections.
+    </p>
+
+    <form action="/search/" method="get" class="search-form" role="search">
+      <label for="q" class="sr-only">Search the site</label>
+      <input id="q" name="q" type="search" placeholder="Search the site..." aria-label="Search the site" />
+      <button type="submit" class="btn btn--primary">Search</button>
+    </form>
+
+    <nav class="quick-links" aria-label="Helpful links">
+      <a href="/" class="btn btn--outline">Home</a>
+      <a href="/blog/" class="btn">Blog</a>
+      <a href="/project/" class="btn btn--info">Projects</a>
+      <a href="/contact/" class="btn btn--secondary">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<main class="container">
+  <section class="recent-posts">
+    <h2>Recent posts</h2>
+    <ul class="list-unstyled">
+      {% for post in site.posts limit:5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="muted"> — {{ post.date | date: "%b %d, %Y" }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="popular-categories">
+    <h2>Categories</h2>
+    <ul class="list-unstyled">
+      {% for category in site.categories %}
+      <li>
+        <a href="{{ '/categories/' | append: category[0] | relative_url }}">{{ category[0] }}</a>
+        <span class="muted">({{ category[1].size }})</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="contact-help">
+    <h2>Need help?</h2>
+    <p>If you can't find what you're looking for, <a href="/contact/">get in touch</a> and I'll help you find it.</p>
+  </section>
+</main>
+
+<style>
+/* Small local styles to ensure 404 looks integrated with site */
+.search-form{display:flex;gap:0.5rem;max-width:40rem;margin:.5rem 0}
+.search-form input[type=search]{flex:1;padding:.5rem;border:1px solid var(--card-border);border-radius:6px}
+.quick-links{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
+.recent-posts ul,.popular-categories ul{margin:0;padding:0;list-style:none}
+.recent-posts li{margin:.4rem 0}
+.muted{color:var(--card-text-muted);font-size:.95rem}
+@media (min-width:768px){.page__hero{padding:4rem 0}}
+</style>

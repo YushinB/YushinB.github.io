@@ -1,0 +1,477 @@
+/* ==========================================================================
+   ABOUT PAGE STYLES
+   Custom styling for the About page using design system tokens
+   ========================================================================== */
+
+/* Use design system CSS variables */
+:root {
+  --about-text-color: #2f3e46;
+  --about-heading-color: #2f3e46;
+  --about-secondary-text: #52796f;
+  --about-accent-color: #84a98c;
+  --about-success-color: #52796f;
+  --about-primary-color: #354f52;
+  --about-background-light: rgba(132, 169, 140, 0.05);
+  --about-border-color: #84a98c;
+  --about-shadow-color: rgba(47, 62, 70, 0.1);
+}
+
+/* Dark theme overrides */
+[data-theme="dark"] {
+  --about-text-color: #e0e0e0;
+  --about-heading-color: #ffffff;
+  --about-secondary-text: #b0b0b0;
+  --about-accent-color: #64b5f6;
+  --about-success-color: #64b5f6;
+  --about-primary-color: #64b5f6;
+  --about-background-light: rgba(100, 181, 246, 0.1);
+  --about-border-color: #333333;
+  --about-shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --about-text-color: #e0e0e0;
+    --about-heading-color: #ffffff;
+    --about-secondary-text: #b0b0b0;
+    --about-accent-color: #64b5f6;
+    --about-success-color: #64b5f6;
+    --about-primary-color: #64b5f6;
+    --about-background-light: rgba(100, 181, 246, 0.1);
+    --about-border-color: #333333;
+    --about-shadow-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Header overlay text fix */
+.page__hero--overlay .page__title,
+.page__hero--overlay .page__lead,
+.page__hero--overlay .page__meta,
+.page__hero--overlay,
+.page__hero--overlay * {
+  color: #ffffff !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   EDUCATION TIMELINE
+   ========================================================================== */
+
+.education-timeline {
+  margin: var(--space-xl) 0;
+}
+
+.education-item {
+  display: flex;
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  background: var(--about-background-light);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--about-accent-color);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+.education-year {
+  flex-shrink: 0;
+  margin-right: var(--space-lg);
+}
+
+.year-badge {
+  background: var(--about-success-color);
+  color: #ffffff !important;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-round);
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.education-content h4 {
+  margin-bottom: var(--space-sm);
+  color: var(--about-heading-color) !important;
+  font-weight: bold;
+}
+
+.education-content p {
+  color: var(--about-text-color) !important;
+  margin-bottom: var(--space-sm);
+  line-height: 1.6;
+}
+
+.education-content ul {
+  margin: var(--space-sm) 0;
+  padding-left: var(--space-lg);
+}
+
+.education-content li {
+  color: var(--about-text-color) !important;
+  margin-bottom: 0.4rem;
+  line-height: 1.5;
+}
+
+.education-content strong {
+  color: var(--about-heading-color) !important;
+  font-weight: 600;
+}
+
+.education-content em {
+  color: var(--about-secondary-text) !important;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   WORK TIMELINE
+   ========================================================================== */
+
+.work-timeline {
+  position: relative;
+  margin: var(--space-xl) 0;
+  padding-left: 3rem;
+}
+
+.work-timeline::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--about-primary-color), var(--about-success-color));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: var(--space-2xl);
+  padding: var(--space-lg);
+  background: var(--about-background-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--about-primary-color);
+  backdrop-filter: blur(10px);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.timeline-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline-item.current {
+  border-left-color: var(--about-success-color);
+  background: linear-gradient(135deg, rgba(132, 169, 140, 0.1) 0%, var(--about-background-light) 100%);
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2.5rem;
+  top: var(--space-lg);
+  width: 2rem;
+  height: 2rem;
+  background: var(--about-primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.timeline-item.current .timeline-marker {
+  background: var(--about-success-color);
+}
+
+.timeline-content h4 {
+  color: var(--about-heading-color) !important;
+  font-weight: bold;
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-content p {
+  color: var(--about-text-color) !important;
+  line-height: 1.6;
+  margin-bottom: var(--space-sm);
+}
+
+.company {
+  color: var(--about-secondary-text) !important;
+  font-style: italic;
+}
+
+.duration {
+  color: var(--about-text-color) !important;
+  font-size: 0.9rem;
+}
+
+.achievements {
+  list-style: none;
+  padding: 0;
+}
+
+.achievements li {
+  color: var(--about-text-color) !important;
+  margin-bottom: var(--space-sm);
+  line-height: 1.5;
+}
+
+.tech-tags {
+  margin-top: var(--space-md);
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(132, 169, 140, 0.2);
+  color: var(--about-heading-color);
+  padding: 0.25rem var(--space-sm);
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin: 0.2rem;
+  border: 1px solid var(--about-border-color);
+}
+
+/* ==========================================================================
+   SKILLS SECTION
+   ========================================================================== */
+
+.skills-section {
+  margin: var(--space-xl) 0;
+}
+
+.skill-category {
+  margin-bottom: var(--space-xl);
+}
+
+.skill-item {
+  margin-bottom: var(--space-md);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.skill-name {
+  font-weight: bold;
+  color: var(--about-heading-color) !important;
+}
+
+.skill-level {
+  font-size: 0.9rem;
+  color: var(--about-secondary-text) !important;
+}
+
+.skill-bar {
+  height: 8px;
+  background: rgba(132, 169, 140, 0.2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--about-primary-color), var(--about-success-color));
+  transition: width var(--transition-normal);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+}
+
+.skill-badge {
+  text-align: center;
+  padding: var(--space-md);
+  background: var(--about-background-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal);
+  border: 1px solid var(--about-border-color);
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.skill-badge i {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+  display: block;
+  color: var(--about-accent-color);
+}
+
+.skill-badge span {
+  color: var(--about-heading-color) !important;
+  font-weight: 500;
+}
+
+.skill-level-indicator {
+  height: 4px;
+  border-radius: 2px;
+  margin-top: var(--space-sm);
+}
+
+.expert .skill-level-indicator { background: var(--about-success-color); }
+.advanced .skill-level-indicator { background: var(--about-primary-color); }
+.intermediate .skill-level-indicator { background: var(--about-accent-color); }
+
+.research-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+}
+
+.research-skill {
+  text-align: center;
+  padding: var(--space-lg);
+  background: var(--about-background-light);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--about-border-color);
+}
+
+.research-skill i {
+  font-size: 2.5rem;
+  color: var(--about-accent-color);
+  margin-bottom: var(--space-md);
+}
+
+.research-skill h5 {
+  color: var(--about-heading-color) !important;
+  font-weight: bold;
+  margin-bottom: var(--space-sm);
+}
+
+.research-skill p {
+  color: var(--about-text-color) !important;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   STATS CONTAINER
+   ========================================================================== */
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-xl);
+  margin: var(--space-xl) 0;
+  text-align: center;
+}
+
+.stat-item {
+  padding: var(--space-xl) var(--space-md);
+  background: linear-gradient(135deg, var(--about-primary-color), var(--about-success-color));
+  color: white;
+  border-radius: 15px;
+  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: var(--space-sm);
+  color: #ffffff !important;
+}
+
+.stat-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   RESEARCH INTERESTS
+   ========================================================================== */
+
+.research-interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin: var(--space-xl) 0;
+}
+
+.interest-tag {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-round);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform var(--transition-fast);
+}
+
+.interest-tag:hover {
+  transform: translateY(-2px);
+}
+
+.interest-tag.primary {
+  background: var(--about-primary-color);
+  color: white;
+}
+
+.interest-tag.secondary {
+  background: var(--about-background-light);
+  color: var(--about-text-color);
+  border: 1px solid var(--about-border-color);
+}
+
+/* ==========================================================================
+   CONTACT CTA
+   ========================================================================== */
+
+.contact-cta {
+  text-align: center;
+  margin: var(--space-2xl) 0;
+}
+
+/* ==========================================================================
+   GLOBAL TEXT VISIBILITY
+   ========================================================================== */
+
+.page__content h2,
+.page__content h3,
+.page__content h4,
+.page__content h5,
+.page__content h6 {
+  color: var(--about-heading-color) !important;
+}
+
+.page__content p {
+  color: var(--about-text-color) !important;
+}
+
+.page__content li {
+  color: var(--about-text-color) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .education-item {
+    flex-direction: column;
+  }
+  
+  .education-year {
+    margin-right: 0;
+    margin-bottom: var(--space-md);
+  }
+  
+  .work-timeline {
+    padding-left: var(--space-lg);
+  }
+  
+  .timeline-marker {
+    left: -1.75rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}

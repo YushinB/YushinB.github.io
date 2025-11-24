@@ -1,0 +1,36 @@
+{% if page.mermaid %}
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({ 
+    startOnLoad: false,
+    theme: 'default',
+    securityLevel: 'loose'
+  });
+  
+  window.addEventListener('load', function() {
+    // Find all code blocks with language-mermaid class
+    document.querySelectorAll('code.language-mermaid').forEach(function(codeBlock) {
+      // Get the mermaid code
+      var mermaidCode = codeBlock.textContent;
+      
+      // Create a new div for mermaid
+      var mermaidDiv = document.createElement('div');
+      mermaidDiv.className = 'mermaid';
+      mermaidDiv.textContent = mermaidCode;
+      
+      // Replace the pre/code block with the mermaid div
+      var preBlock = codeBlock.parentElement;
+      preBlock.parentElement.replaceChild(mermaidDiv, preBlock);
+    });
+    
+    // Now render all mermaid diagrams
+    mermaid.run();
+  });
+</script>
+<style>
+  .mermaid {
+    text-align: center;
+    margin: 2em 0;
+  }
+</style>
+{% endif %}

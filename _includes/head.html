@@ -18,6 +18,16 @@
 
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/components.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/responsive.css' | relative_url }}">
+
+<!-- Page-specific CSS -->
+{% if page.custom_css %}
+  {% for css_file in page.custom_css %}
+    <link rel="stylesheet" href="{{ css_file | relative_url }}">
+  {% endfor %}
+{% endif %}
+
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
 
@@ -26,3 +36,6 @@
     <script src="{{ script | relative_url }}"></script>
   {% endfor %}
 {% endif %}
+
+<!-- MathJax Support -->
+{% include mathjax.html %}

@@ -1,0 +1,14 @@
+{% assign tags = site.tags | sort %}
+<div class="taxonomy-section">
+  <h2 class="taxonomy-title">Tags</h2>
+  <ul class="taxonomy-list">
+    {% for tag in tags %}
+      <li>
+        <a href="{{ site.tag_archive.path | default: '/tags/' | relative_url }}#{{ tag[0] | slugify }}">
+          {{ tag[0] }}
+        </a>
+        <span class="taxonomy-count">{{ tag[1].size }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
