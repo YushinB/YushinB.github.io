@@ -1,0 +1,14 @@
+{% assign categories = site.categories | sort %}
+<div class="taxonomy-section">
+  <h2 class="taxonomy-title">Categories</h2>
+  <ul class="taxonomy-list">
+    {% for category in categories %}
+      <li>
+        <a href="{{ site.category_archive.path | default: '/categories/' | relative_url }}#{{ category[0] | slugify }}">
+          {{ category[0] }}
+        </a>
+        <span class="taxonomy-count">{{ category[1].size }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

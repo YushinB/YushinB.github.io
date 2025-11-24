@@ -2,6 +2,31 @@
    RESPONSIVE DESIGN - Mobile First Approach
    ========================================================================== */
 
+
+   
+/* ==========================================================================
+   RESPONSIVE FIXES - Prevent horizontal overflow and adjust margins
+   ========================================================================== */
+
+/* Global overflow prevention */
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure hero and main containers don't overflow */
+.homepage-hero,
+.hero-content,
+.page__hero,
+.page__content {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* ==========================================================================
    Base Styles - Mobile First (320px and up)
    ========================================================================== */
@@ -17,141 +42,63 @@
   max-width: 100%;
 }
 
-/* Fix sidebar overlay issue - ensure content doesn't overlap */
-@media (min-width: 64em) {
-  .layout--single .page,
-  .layout--home .page,
-  .layout--collection .page,
-  .layout--archive .page,
-  .layout--posts .page {
-    float: left;
-    width: calc(100% - 300px);
-    padding-right: 3rem;
-    padding-left: 3.5rem;
-  }
-  
-  /* Extra spacing for blog and articles pages */
-  .layout--archive .page,
-  .layout--posts .page,
-  .layout--collection .page {
-    padding-left: 4.5rem;
-    padding-right: 3.5rem;
-  }
-  
-  .sidebar {
-    width: 250px;
-    padding-right: 2rem;
-  }
-  
-  .page__inner-wrap {
-    float: left;
-    width: 100%;
-  }
-}
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS - Organized by Screen Size
+   ========================================================================== */
 
-/* Adjust main content area for better use of space */
-@media (min-width: 80em) {
-  .layout--single .page,
-  .layout--home .page,
-  .layout--collection .page,
-  .layout--archive .page,
-  .layout--posts .page {
-    width: calc(100% - 320px);
-    padding-right: 3.5rem;
-    padding-left: 4rem;
-  }
-  
-  /* Extra spacing for blog and articles pages */
-  .layout--archive .page,
-  .layout--posts .page,
-  .layout--collection .page {
-    padding-left: 5rem;
-    padding-right: 4rem;
-  }
-  
-  .page__related {
-    max-width: 100%;
-  }
-  
-  .sidebar {
-    width: 280px;
-    padding-right: 2.5rem;
-  }
-}
-
-/* Navigation and Mobile Menu Fix */
-.masthead {
-  position: relative;
-}
-
-.greedy-nav {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.greedy-nav__toggle {
-  order: 9;
-  margin-left: auto;
-}
-
-.search__toggle {
-  order: 8;
-}
-
-/* Mobile Navigation - Show hamburger menu when needed */
+/* ==========================================================================
+   MOBILE NAVIGATION (up to 1024px)
+   ========================================================================== */
 @media (max-width: 1024px) {
-  /* Dropdown menu styling - semi-transparent with theme matching */
-  .greedy-nav .hidden-links {
-    position: absolute !important;
-    top: 100% !important;
-    right: 0 !important;
-    background: rgba(255, 255, 255, 0.95) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
-    border-radius: 8px !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-    min-width: 200px !important;
-    z-index: 1002 !important;
-    padding: 0 !important;
-    margin-top: 5px !important;
-    overflow: hidden !important;
-    pointer-events: auto !important; /* Ensure menu can receive clicks */
+  /* Navigation structure */
+  .masthead {
+    position: relative;
   }
-  
-  .greedy-nav .hidden-links:not(.hidden) {
+
+  .greedy-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    position: relative;
+    z-index: 1000;
+  }
+
+  .greedy-nav__toggle {
+    order: 9;
+    margin-left: 0.5rem;
     display: block !important;
     visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important; /* Ensure visible menu can receive clicks */
+    outline: none;
+    cursor: pointer;
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+    z-index: 1001;
+  }
+
+  .search__toggle {
+    order: 8;
+    position: relative;
+    flex-shrink: 0;
+    margin-left: 0.25rem;
+    z-index: 1001;
   }
   
-  .greedy-nav .hidden-links.hidden {
-    display: none !important;
+  .greedy-nav .site-title {
+    flex: 1;
+    margin-right: auto;
+    font-size: 1.1rem;
+    padding-right: 0.5rem;
   }
   
-  /* Background overlay when menu is open - prevent color accumulation */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    pointer-events: none; /* Allow clicks to pass through to menu items */
-  }
-  
-  /* Show overlay only when menu is open */
-  body.nav-open::before {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s ease, visibility 0s linear 0s;
+  .greedy-nav .site-logo {
+    max-width: 80px;
+    margin-right: 0.5rem;
   }
   
   /* Hide navigation links on mobile */
@@ -167,46 +114,6 @@
     opacity: 1 !important;
   }
   
-  .greedy-nav {
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    position: relative;
-    z-index: 1000;
-  }
-  
-  .greedy-nav .site-title {
-    flex: 1;
-    margin-right: auto;
-    font-size: 1.1rem;
-    padding-right: 0.5rem;
-  }
-  
-  .greedy-nav .site-logo {
-    max-width: 80px;
-    margin-right: 0.5rem;
-  }
-  
-  .greedy-nav .search__toggle,
-  .greedy-nav__toggle {
-    position: relative;
-    flex-shrink: 0;
-    margin-left: 0.25rem;
-    z-index: 1001;
-  }
-  
-  .greedy-nav__toggle {
-    margin-left: 0.5rem;
-    display: block !important;
-    visibility: visible !important;
-    outline: none;
-    cursor: pointer;
-    padding: 8px;
-    min-width: 44px;
-    min-height: 44px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
   .greedy-nav__toggle:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
@@ -216,6 +123,13 @@
     outline-offset: 2px;
   }
   
+  /* Ensure buttons don't get too cramped */
+  .greedy-nav button {
+    min-width: 44px;
+    height: 44px;
+  }
+  
+  /* Hamburger icon */
   .navicon {
     display: block !important;
     position: relative;
@@ -260,17 +174,41 @@
     bottom: 0;
   }
   
-  /* Ensure buttons don't get too cramped */
-  .greedy-nav button {
-    min-width: 44px;
-    height: 44px;
+  /* Dropdown menu styling */
+  .greedy-nav .hidden-links {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+    min-width: 200px !important;
+    z-index: 1002 !important;
+    padding: 0 !important;
+    margin-top: 5px !important;
+    overflow: hidden !important;
+    pointer-events: auto !important;
+  }
+  
+  .greedy-nav .hidden-links:not(.hidden) {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  
+  .greedy-nav .hidden-links.hidden {
+    display: none !important;
   }
   
   .greedy-nav .hidden-links li {
     display: block !important;
     margin: 0 !important;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-    pointer-events: auto !important; /* Ensure list items can receive clicks */
+    pointer-events: auto !important;
   }
   
   .greedy-nav .hidden-links li:last-child {
@@ -284,19 +222,43 @@
     color: #333 !important;
     font-weight: 500 !important;
     transition: background-color 0.2s ease !important;
-    pointer-events: auto !important; /* Ensure links can receive clicks */
-    cursor: pointer !important; /* Ensure cursor shows as clickable */
-    position: relative !important; /* Ensure proper positioning */
-    z-index: 1003 !important; /* Higher than menu container */
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 1003 !important;
   }
   
   .greedy-nav .hidden-links a:hover {
     background-color: rgba(0, 0, 0, 0.05) !important;
     color: #007acc !important;
   }
+  
+  /* Background overlay when menu is open */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    pointer-events: none;
+  }
+  
+  body.nav-open::before {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+  }
 }
 
-/* Tablet specific navigation fixes */
+/* ==========================================================================
+   TABLET NAVIGATION (768px - 1024px)
+   ========================================================================== */
 @media (min-width: 768px) and (max-width: 1024px) {
   .greedy-nav .site-title {
     font-size: 1.25rem;
@@ -312,7 +274,9 @@
   }
 }
 
-/* Large screens - show full navigation */
+/* ==========================================================================
+   DESKTOP NAVIGATION (1025px+)
+   ========================================================================== */
 @media (min-width: 1025px) {
   .greedy-nav__toggle.hidden {
     display: none !important;
@@ -323,220 +287,77 @@
   }
 }
 
-/* Hero Section Responsive */
-.homepage-hero {
-  padding: 1.5rem 0.8rem;
-  margin: -1rem -1rem 1.5rem -1rem;
+/* ==========================================================================
+   SIDEBAR POSITIONING
+   ========================================================================== */
+/* Medium Desktops (64em / 1024px+) */
+@media (min-width: 64em) {
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    float: left;
+    width: calc(100% - 300px);
+    padding-right: 3rem;
+    padding-left: 3.5rem;
+  }
+  
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 4.5rem;
+    padding-right: 3.5rem;
+  }
+  
+  .sidebar {
+    width: 250px;
+    padding-right: 2rem;
+  }
+  
+  .page__inner-wrap {
+    float: left;
+    width: 100%;
+  }
 }
 
-.hero-content {
-  max-width: 100%;
-  padding: 0 0.5rem;
-}
-
-.homepage-hero .hero-title {
-  font-size: 1.5rem;
-  line-height: 1.3;
-  margin-bottom: 0.6rem;
-}
-
-.homepage-hero .hero-subtitle {
-  font-size: 0.875rem;
-  line-height: 1.4;
-  margin-bottom: 0.6rem;
-}
-
-.homepage-hero .hero-description {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-/* Blog Section Responsive */
-.blog-section {
-  padding: 0.8rem 0;
-  margin: 0.8rem 0;
-}
-
-.blog-intro {
-  padding: 0 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.blog-intro p {
-  font-size: 0.875rem;
-  line-height: 1.6;
-}
-
-.blog-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  padding: 0 0.5rem;
-  margin: 0.8rem 0;
-}
-
-.blog-card {
-  padding: 1rem;
-  margin-bottom: 0;
-}
-
-.blog-card .blog-header h3 {
-  font-size: 1.125rem;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-
-.blog-card .blog-header h3 a {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.blog-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  margin-bottom: 0.6rem;
-}
-
-.blog-date,
-.blog-category {
-  font-size: 0.8125rem;
-  display: block;
-}
-
-.blog-excerpt {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 0.6rem;
-}
-
-.blog-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  margin: 0.6rem 0;
-}
-
-.blog-tags .tag,
-.tech-tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
-}
-
-.read-more {
-  display: inline-block;
-  font-size: 0.875rem;
-  margin-top: 0.4rem;
-}
-
-/* Header and Navigation */
-.page__hero--overlay {
-  padding: 1.5rem 0.8rem;
-}
-
-.page__hero .page__title {
-  font-size: 1.5rem;
-  line-height: 1.3;
-}
-
-.page__hero .page__lead {
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-
-/* Buttons */
-.page__hero .btn {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  margin: 0.3rem 0.3rem 0.3rem 0;
-  display: inline-block;
-}
-
-/* Author Profile - Mobile */
-.sidebar {
-  margin-bottom: 2rem;
-}
-
-.author__avatar {
-  width: 80px;
-  height: 80px;
-}
-
-.author__content {
-  padding: 0.5rem;
-}
-
-.author__name {
-  font-size: 1.125rem;
-}
-
-.author__bio {
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-/* Collection Grid Layout */
-.entries-grid,
-.entries-list {
-  max-width: 100%;
-}
-
-.grid__item {
-  margin-bottom: 1.5rem;
-}
-
-/* Archive and Collection Pages - Better Spacing */
-.layout--archive .page__content,
-.layout--posts .page__content,
-.layout--collection .page__content {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.layout--archive .entries-list,
-.layout--archive .entries-grid,
-.layout--posts .entries-list,
-.layout--posts .entries-grid,
-.layout--collection .entries-list,
-.layout--collection .entries-grid {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-/* Content spacing */
-.page__content {
-  padding: 0.8rem;
-  font-size: 1rem;
-}
-
-.page__content h2 {
-  font-size: 1.5rem;
-  margin: 1rem 0 0.6rem;
-}
-
-.page__content h3 {
-  font-size: 1.25rem;
-  margin: 0.8rem 0 0.5rem;
-}
-
-.page__content p {
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 0.7rem;
-}
-
-/* Images */
-.page__content img {
-  max-width: 100%;
-  height: auto;
+/* Large Desktops (80em / 1280px+) */
+@media (min-width: 80em) {
+  .layout--single .page,
+  .layout--home .page,
+  .layout--collection .page,
+  .layout--archive .page,
+  .layout--posts .page {
+    width: calc(100% - 320px);
+    padding-right: 3.5rem;
+    padding-left: 4rem;
+  }
+  
+  .layout--archive .page,
+  .layout--posts .page,
+  .layout--collection .page {
+    padding-left: 5rem;
+    padding-right: 4rem;
+  }
+  
+  .page__related {
+    max-width: 100%;
+  }
+  
+  .sidebar {
+    width: 280px;
+    padding-right: 2.5rem;
+  }
 }
 
 /* ==========================================================================
-   Small Phones (up to 375px)
+   MOBILE (up to 767px) - Base Styles
    ========================================================================== */
 @media (max-width: 375px) {
+  .homepage-hero {
+    padding: 1.5rem 1rem; /* Reduced left/right padding */
+  }
+
   .homepage-hero .hero-title {
     font-size: 1.375rem;
   }
@@ -715,29 +536,6 @@
   .blog-excerpt {
     font-size: 0.875rem;
   }
-  
-  /* Fix sidebar overlay */
-  .layout--single .page,
-  .layout--home .page,
-  .layout--collection .page,
-  .layout--archive .page,
-  .layout--posts .page {
-    width: calc(100% - 280px);
-    padding-left: 3.5rem;
-    padding-right: 3rem;
-  }
-  
-  /* Extra spacing for blog and articles pages */
-  .layout--archive .page,
-  .layout--posts .page,
-  .layout--collection .page {
-    padding-left: 4.5rem;
-    padding-right: 3.5rem;
-  }
-  
-  .sidebar {
-    padding-right: 2rem;
-  }
 }
 
 /* ==========================================================================
@@ -783,42 +581,6 @@
     width: 180px;
     height: 180px;
   }
-  
-  /* Make content wider on large screens - fix sidebar overlay */
-  .page__content,
-  .blog-section,
-  .page__inner-wrap {
-    max-width: 100%;
-  }
-  
-  /* Ensure sidebar doesn't overlap content */
-  .layout--single .page,
-  .layout--home .page,
-  .layout--collection .page,
-  .layout--archive .page,
-  .layout--posts .page {
-    width: calc(100% - 300px);
-    margin-right: 20px;
-    padding-left: 4rem;
-    padding-right: 3.5rem;
-  }
-  
-  /* Extra spacing for blog and articles pages */
-  .layout--archive .page,
-  .layout--posts .page,
-  .layout--collection .page {
-    padding-left: 5rem;
-    padding-right: 4rem;
-  }
-  
-  .sidebar {
-    width: 280px;
-    padding-right: 2.5rem;
-  }
-  
-  .page {
-    width: 100%;
-  }
 }
 
 /* ==========================================================================
@@ -849,45 +611,13 @@
   .blog-grid {
     max-width: 100%;
   }
-  
-  /* Override Minimal Mistakes default max-width */
-  .page {
-    max-width: 100%;
-  }
-  
-  .layout--single .page,
-  .layout--home .page,
-  .layout--collection .page,
-  .layout--archive .page,
-  .layout--posts .page {
-    max-width: 100%;
-    width: calc(100% - 320px);
-    margin-right: 20px;
-    padding-left: 4.5rem;
-    padding-right: 3.5rem;
-  }
-  
-  /* Extra spacing for blog and articles pages */
-  .layout--archive .page,
-  .layout--posts .page,
-  .layout--collection .page {
-    padding-left: 5.5rem;
-    padding-right: 4rem;
-  }
-  
-  #main {
-    max-width: 100%;
-  }
-  
-  .sidebar {
-    width: 300px;
-    padding-right: 3rem;
-  }
 }
 
 /* ==========================================================================
-   Landscape Orientation Adjustments
+   SPECIAL CONDITIONS
    ========================================================================== */
+
+/* Landscape Orientation */
 @media (max-height: 600px) and (orientation: landscape) {
   .homepage-hero {
     padding: 2rem 1.5rem;
@@ -913,9 +643,7 @@
   }
 }
 
-/* ==========================================================================
-   Print Styles
-   ========================================================================== */
+/* Print Styles */
 @media print {
   .homepage-hero,
   .blog-grid {
@@ -935,9 +663,7 @@
   }
 }
 
-/* ==========================================================================
-   Accessibility - Reduced Motion
-   ========================================================================== */
+/* Reduced Motion (Accessibility) */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -956,9 +682,7 @@
   }
 }
 
-/* ==========================================================================
-   High Contrast Mode Support
-   ========================================================================== */
+/* High Contrast Mode (Accessibility) */
 @media (prefers-contrast: high) {
   .blog-card {
     border: 2px solid currentColor;
@@ -969,9 +693,7 @@
   }
 }
 
-/* ==========================================================================
-   Touch Device Optimizations
-   ========================================================================== */
+/* Touch Device Optimizations */
 @media (hover: none) and (pointer: coarse) {
   /* Increase touch targets for mobile */
   .btn,

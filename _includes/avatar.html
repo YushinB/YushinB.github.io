@@ -1,0 +1,15 @@
+{%- assign size = include.size | default: "md" -%}
+{%- assign ring = include.ring | default: false -%}
+{%- assign initials = include.initials | default: nil -%}
+<span class="avatar-wrapper">
+  <span class="avatar avatar--{{ size }}{% if ring %} avatar--ring{% endif %}">
+    {% if include.image %}
+      <img src="{{ include.image }}" alt="{{ include.alt | default: "" }}" />
+    {% elsif initials %}
+      <span class="avatar--initials">{{ initials }}</span>
+    {% endif %}
+  </span>
+  {% if include.status %}
+    <span class="avatar__status avatar__status--{{ include.status }}" aria-hidden="true"></span>
+  {% endif %}
+</span>
